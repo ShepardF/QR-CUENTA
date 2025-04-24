@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Información de cuenta</title>
+</head>
+<body>
+  <p id="info">
+    Fernando Cáceres<br>
+    Cuenta De Ahorro<br>
+    401495000960774<br>
+    Banco CUSCATLAN
+  </p>
+  <button onclick="copiarTexto()">Copiar al portapapeles</button>
+
+  <script>
+    function copiarTexto() {
+      const texto = document.getElementById("info").innerText;
+      navigator.clipboard.writeText(texto)
+        .then(() => alert("Copiado al portapapeles"))
+        .catch(err => alert("Error al copiar"));
+    }
+  </script>
+</body>
+</html>
