@@ -1,25 +1,571 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Información de cuenta</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APK TEST Checklist</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            padding: 20px;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            font-size: 1.8em;
+            font-weight: 500;
+        }
+        h3 {
+            color: #555;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            border-bottom: 1px dashed #e0e0e0;
+            padding-bottom: 5px;
+        }
+        .section {
+            margin-bottom: 25px;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+        }
+        label {
+            display: flex;
+            align-items: center;
+            margin: 12px 0;
+            font-size: 1.1em;
+            cursor: pointer;
+            padding: 5px 0;
+            transition: background-color 0.2s ease-in-out;
+        }
+        label:hover {
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        input[type="checkbox"] {
+            margin-right: 12px;
+            width: 20px;
+            height: 20px;
+            accent-color: #007bff;
+            cursor: pointer;
+        }
+        textarea {
+            width: calc(100% - 22px);
+            padding: 15px;
+            font-size: 1.1em;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            resize: vertical;
+            min-height: 100px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+        canvas {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fcfcfc;
+            display: block;
+            margin-top: 10px;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+        button:active {
+            background-color: #004085;
+            transform: translateY(0);
+        }
+        .button-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+        @media print {
+            body {
+                background: #fff;
+                padding: 0;
+            }
+            .section {
+                box-shadow: none;
+                border: 1px solid #eee;
+                margin-bottom: 15px;
+                padding: 15px;
+            }
+            h1, h2, h3 {
+                color: #000;
+                border-bottom: 1px solid #ccc;
+                padding-bottom: 5px;
+            }
+            button, .button-group {
+                display: none;
+            }
+            textarea {
+                border: none;
+                background-color: transparent;
+                resize: none;
+            }
+            canvas {
+                border: 1px dashed #ccc;
+            }
+            label {
+                padding: 0;
+                margin: 8px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-  <p id="info">
-    Fernando Cáceres<br>
-    Cuenta De Ahorro<br>
-    401495000960774<br>
-    Banco CUSCATLAN
-  </p>
-  <button onclick="copiarTexto()">Copiar al portapapeles</button>
 
-  <script>
-    function copiarTexto() {
-      const texto = document.getElementById("info").innerText;
-      navigator.clipboard.writeText(texto)
-        .then(() => alert("Copiado al portapapeles"))
-        .catch(err => alert("Error al copiar"));
-    }
-  </script>
+    <h1>APK TEST - Web Checklist</h1>
+
+    <div class="section">
+        <h2>General</h2>
+        <label><input type="checkbox"> Pin Keypad </label>
+        <label><input type="checkbox"> Sync Now </label>
+        <label><input type="checkbox"> Tech Support </label>
+        <label><input type="checkbox"> Open Team Viewer </label>
+        <label><input type="checkbox"> Search by item name </label>
+        <label><input type="checkbox"> Add Guest </label>
+        <label><input type="checkbox"> Order Type </label>
+        <label><input type="checkbox"> Switch User </label>
+    </div>
+
+    <div class="section">
+        <h2>Time Card</h2>
+        <label><input type="checkbox"> Clock In </label>
+        <label><input type="checkbox"> Clock Out </label>
+        <label><input type="checkbox"> Start Break </label>
+        <label><input type="checkbox"> Work Schedule </label>
+        <label><input type="checkbox"> Time Cards </label>
+        <label><input type="checkbox"> Tip Report </label>
+    </div>
+
+    <div class="section">
+        <h2>Menu Display</h2>
+        <h3>Dine In</h3>
+        <label><input type="checkbox"> Floor Plan </label>
+        <label><input type="checkbox"> Floor Plan Guest </label>
+        <label><input type="checkbox"> Floor Plan Alert </label>
+        <label><input type="checkbox"> Menu Display (Dine In) </label>
+        <h3>To Go</h3>
+        <label><input type="checkbox"> Menu Display (To Go) </label>
+        <h3>Pickup</h3>
+        <label><input type="checkbox"> Phone Number Screen </label>
+        <label><input type="checkbox"> Save User Data </label>
+        <label><input type="checkbox"> Menu Display (Pickup) </label>
+        <h3>Delivery</h3>
+        <label><input type="checkbox"> User Save Address Data </label>
+        <label><input type="checkbox"> Menu Display (Delivery) </label>
+    </div>
+
+    <div class="section">
+        <h2>Orders/Menu</h2>
+        <label><input type="checkbox"> Menu Groups </label>
+        <label><input type="checkbox"> Menu Sub Groups </label>
+        <label><input type="checkbox"> Items </label>
+        <label><input type="checkbox"> Item Quantity </label>
+        <label><input type="checkbox"> Item Special Request </label>
+        <label><input type="checkbox"> Discount on Item </label>
+        <label><input type="checkbox"> Void a specific item </label>
+    </div>
+
+    <div class="section">
+        <h2>Upper Options</h2>
+        <label><input type="checkbox"> Change Server </label>
+    </div>
+
+    <div class="section">
+        <h2>Right Options</h2>
+        <label><input type="checkbox"> Voids </label>
+        <label><input type="checkbox"> Reorder </label>
+        <label><input type="checkbox"> Hold </label>
+        <label><input type="checkbox"> Split </label>
+        <label><input type="checkbox"> Combine </label>
+        <label><input type="checkbox"> Tip (On order) </label>
+        <label><input type="checkbox"> Tax Exempt </label>
+        <label><input type="checkbox"> Surcharges </label>
+        <label><input type="checkbox"> Change Table (Dine In) </label>
+        <label><input type="checkbox"> Modifier </label>
+    </div>
+
+    <div class="section">
+        <h2>Lower Options</h2>
+        <label><input type="checkbox"> Cash Tender </label>
+        <label><input type="checkbox"> Order Discount </label>
+        <label><input type="checkbox"> Send </label>
+        <label><input type="checkbox"> Settles </label>
+        <label><input type="checkbox"> New Plate </label>
+        <label><input type="checkbox"> Recall </label>
+        <label><input type="checkbox"> No Sales </label>
+        <label><input type="checkbox"> Print </label>
+        <label><input type="checkbox"> Settle </label>
+    </div>
+
+    <div class="section">
+        <h2>Settle</h2>
+        <label><input type="checkbox"> Cash </label>
+        <label><input type="checkbox"> Credit Card </label>
+        <label><input type="checkbox"> Even Split </label>
+        <label><input type="checkbox"> Check Transaction (Not Available PAX demo mode) </label>
+        <label><input type="checkbox"> Tip </label>
+        <label><input type="checkbox"> Cash Amount </label>
+        <label><input type="checkbox"> Change Amount </label>
+        <label><input type="checkbox"> Exact Cash </label>
+        <label><input type="checkbox"> Same order different type of payments </label>
+    </div>
+
+    <div class="section">
+        <h2>Recall</h2>
+        <label><input type="checkbox"> Recall every order type </label>
+    </div>
+
+    <div class="section">
+        <h2>Void</h2>
+        <label><input type="checkbox"> Void every order type </label>
+        <label><input type="checkbox"> Void Order with partial payment </label>
+    </div>
+
+    <div class="section">
+        <h2>Cashier</h2>
+        <label><input type="checkbox"> Cashier In </label>
+        <label><input type="checkbox"> Money Count Screen (Amounts, Discrepancies, keypad to enter amount) </label>
+        <label><input type="checkbox"> Cashier Out </label>
+        <label><input type="checkbox"> Wage Advance (Back Office) </label>
+        <label><input type="checkbox"> Pay Out </label>
+        <label><input type="checkbox"> Bank </label>
+        <label><input type="checkbox"> Refund (Cash and CC) </label>
+        <label><input type="checkbox"> Add Tip </label>
+        <label><input type="checkbox"> Re-Open </label>
+        <label><input type="checkbox"> Report </label>
+        <label><input type="checkbox"> Paid Orders </label>
+        <label><input type="checkbox"> No Sales </label>
+    </div>
+
+    <div class="section">
+        <h2>Staff Bank</h2>
+        <label><input type="checkbox"> Open Staff Bank </label>
+        <label><input type="checkbox"> Money Count Screen (Amounts, Discrepancies, keypad to enter amount) </label>
+        <label><input type="checkbox"> Close Staff Bank </label>
+        <label><input type="checkbox"> Wage Advance (Back Office) </label>
+        <label><input type="checkbox"> Pay Out </label>
+        <label><input type="checkbox"> Bank </label>
+        <label><input type="checkbox"> Refund (Cash and CC) </label>
+        <label><input type="checkbox"> Add Tip </label>
+        <label><input type="checkbox"> Re-Open </label>
+        <label><input type="checkbox"> Report </label>
+        <label><input type="checkbox"> Paid Orders </label>
+    </div>
+
+    <div class="section">
+        <h2>Daily Close</h2>
+        <label><input type="checkbox"> Daily Close </label>
+        <label><input type="checkbox"> Daily Close Report (Date filters, Print) </label>
+        <label><input type="checkbox"> Current Work Day </label>
+        <label><input type="checkbox"> Time Card Counter </label>
+        <label><input type="checkbox"> Cashiers Counter </label>
+        <label><input type="checkbox"> Staffbank Counter </label>
+        <label><input type="checkbox"> Orders Not Paid </label>
+        <label><input type="checkbox"> Alert pending requirements </label>
+    </div>
+
+    <div class="section">
+        <h2>Station Settings</h2>
+        <label><input type="checkbox"> Payment Methods </label>
+        <label><input type="checkbox"> Printers (Print Test) </label>
+        <label><input type="checkbox"> Card Reader </label>
+        <label><input type="checkbox"> Station Info </label>
+        <label><input type="checkbox"> KDS Device </label>
+    </div>
+
+    <div class="section">
+        <h2>Back Office</h2>
+        <label><input type="checkbox"> Dashboard </label>
+        <label><input type="checkbox"> ABGO Reports </label>
+        <h3>Orders</h3>
+        <label><input type="checkbox"> Sales Summary </label>
+        <label><input type="checkbox"> Sales by Item </label>
+        <label><input type="checkbox"> Sales by Order Type </label>
+        <label><input type="checkbox"> Order Voids </label>
+        <label><input type="checkbox"> Order Voids Summary </label>
+        <h3>Sales Report</h3>
+        <label><input type="checkbox"> Orders </label>
+        <label><input type="checkbox"> Sales Summary </label>
+        <label><input type="checkbox"> Sales by Items </label>
+        <label><input type="checkbox"> Sales by Category </label>
+        <label><input type="checkbox"> Sales by Station </label>
+        <label><input type="checkbox"> Sales by Payment Method </label>
+        <label><input type="checkbox"> Sales by Server </label>
+        <label><input type="checkbox"> Sales by Hour Range </label>
+        <label><input type="checkbox"> Top Ten Items </label>
+        <label><input type="checkbox"> Count Down </label>
+        <label><input type="checkbox"> Menu Items Sales by Category </label>
+        <label><input type="checkbox"> Order Type Reports </label>
+        <label><input type="checkbox"> Registered Activities Report </label>
+        <label><input type="checkbox"> Payout Details </label>
+        <label><input type="checkbox"> Refund Details </label>
+        <label><input type="checkbox"> Order Payments </label>
+        <label><input type="checkbox"> Cashier/Staffbank </label>
+        <label><input type="checkbox"> Discount Usage Summary </label>
+        <label><input type="checkbox"> Surcharge Usage </label>
+        <label><input type="checkbox"> Taxes </label>
+        <label><input type="checkbox"> Tax Exempts </label>
+        <h3>Daily Close/Batches</h3>
+        <label><input type="checkbox"> Daily Close </label>
+        <label><input type="checkbox"> Batches </label>
+        <label><input type="checkbox"> Transactions </label>
+        <h3>Employee Reports</h3>
+        <label><input type="checkbox"> Server Tip Summary </label>
+        <label><input type="checkbox"> Time Card </label>
+        <h3>Audit Reports</h3>
+        <label><input type="checkbox"> Order Voids </label>
+        <label><input type="checkbox"> Payment Void </label>
+        <label><input type="checkbox"> Void Summary by Reason </label>
+        <label><input type="checkbox"> No Sale Log </label>
+        <label><input type="checkbox"> Combine Order </label>
+        <label><input type="checkbox"> Change Server </label>
+    </div>
+
+    <div class="section">
+        <h2>CDS</h2>
+        <label><input type="checkbox"> Cloud Settings </label>
+        <label><input type="checkbox"> Real Time Order (Modifiers, Special Request text) </label>
+        <label><input type="checkbox"> Tips </label>
+        <label><input type="checkbox"> Sign For CC </label>
+        <label><input type="checkbox"> CC Tips </label>
+        <h3>Receipts</h3>
+        <label><input type="checkbox"> Print Option </label>
+        <label><input type="checkbox"> Email </label>
+        <label><input type="checkbox"> No Print </label>
+        <label><input type="checkbox"> Phone </label>
+        <h3>KDS Settings</h3>
+        <label><input type="checkbox"> Show Order </label>
+        <label><input type="checkbox"> Order Alerts </label>
+        <label><input type="checkbox"> Notification Sound </label>
+        <label><input type="checkbox"> Show Price Next to item </label>
+        <label><input type="checkbox"> Bump Screen Settings </label>
+        <label><input type="checkbox"> Language </label>
+        <label><input type="checkbox"> Print Test </label>
+    </div>
+
+    <div class="section">
+        <h2>Emails Notification</h2>
+        <label><input type="checkbox"> Receipt </label>
+        <label><input type="checkbox"> Back Office Order </label>
+        <label><input type="checkbox"> ABGO Report </label>
+        <label><input type="checkbox"> AB POS Receipt </label>
+    </div>
+
+    <div class="section">
+        <h2>Comentarios</h2>
+        <textarea id="comments" placeholder="Añade tus comentarios aquí..."></textarea>
+    </div>
+
+    <div class="section">
+        <h2>Firma</h2>
+        <canvas id="signature-pad" width="500" height="150"></canvas>
+        <br>
+        <button onclick="clearSignature()" style="margin-top:15px;">Limpiar Firma</button>
+    </div>
+
+    <div class="button-group">
+        <button id="print-checklist">Imprimir Checklist</button>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('signature-pad');
+        const ctx = canvas.getContext('2d');
+        let drawing = false;
+
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            ctx.scale(ratio, ratio);
+            ctx.lineWidth = 2; // Adjust line width for better appearance on high-res displays
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#000';
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial resize
+
+        canvas.addEventListener('mousedown', e => {
+            drawing = true;
+            ctx.beginPath();
+            const rect = canvas.getBoundingClientRect();
+            ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+        });
+
+        canvas.addEventListener('mousemove', e => {
+            if (drawing) {
+                const rect = canvas.getBoundingClientRect();
+                ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+                ctx.stroke();
+            }
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            drawing = false;
+        });
+
+        canvas.addEventListener('mouseleave', () => {
+            drawing = false;
+        });
+
+        // Touch events for mobile devices
+        canvas.addEventListener('touchstart', e => {
+            e.preventDefault(); // Prevent scrolling when drawing
+            const touch = e.touches[0];
+            const rect = canvas.getBoundingClientRect();
+            drawing = true;
+            ctx.beginPath();
+            ctx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
+        });
+
+        canvas.addEventListener('touchmove', e => {
+            e.preventDefault(); // Prevent scrolling when drawing
+            if (drawing) {
+                const touch = e.touches[0];
+                const rect = canvas.getBoundingClientRect();
+                ctx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+                ctx.stroke();
+            }
+        });
+
+        canvas.addEventListener('touchend', () => {
+            drawing = false;
+        });
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        document.getElementById('print-checklist').addEventListener('click', () => {
+            window.print();
+        });
+
+        // This ensures the content is ready for printing
+        window.onbeforeprint = () => {
+            // Store current values for comments and signature
+            const commentsText = document.getElementById('comments').value;
+            const signatureImage = canvas.toDataURL(); // Get signature as data URL
+
+            // Temporarily replace input fields with static content for printing
+            const commentsDiv = document.createElement('div');
+            commentsDiv.innerHTML = `<strong>Comentarios:</strong><br>${commentsText.replace(/\n/g, '<br>')}`;
+            commentsDiv.style.padding = '10px';
+            commentsDiv.style.border = '1px solid #eee';
+            commentsDiv.style.borderRadius = '8px';
+            commentsDiv.style.backgroundColor = '#f9f9f9';
+            commentsDiv.id = 'comments-print'; // Add an ID to easily find it later
+            document.getElementById('comments').replaceWith(commentsDiv);
+
+            const signatureDiv = document.createElement('div');
+            signatureDiv.innerHTML = `<strong>Firma:</strong><br><img src="${signatureImage}" style="max-width:100%; height:auto; border:1px solid #ccc; border-radius:6px;"/>`;
+            signatureDiv.style.padding = '10px';
+            signatureDiv.style.border = '1px solid #eee';
+            signatureDiv.style.borderRadius = '8px';
+            signatureDiv.style.backgroundColor = '#f9f9f9';
+            signatureDiv.id = 'signature-print'; // Add an ID to easily find it later
+            document.getElementById('signature-pad').replaceWith(signatureDiv);
+
+            // Ensure checkboxes are marked as checked in the print view
+            document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+                if (cb.checked) {
+                    cb.setAttribute('checked', 'checked');
+                } else {
+                    cb.removeAttribute('checked');
+                }
+            });
+        };
+
+        // Restore original input fields after printing (or print dialog is closed)
+        window.onafterprint = () => {
+            const commentsDiv = document.getElementById('comments-print');
+            if (commentsDiv) {
+                const originalComments = document.createElement('textarea');
+                originalComments.id = 'comments';
+                originalComments.placeholder = 'Añade tus comentarios aquí...';
+                originalComments.value = commentsDiv.innerHTML.replace(/<br>/g, '\n').replace('<strong>Comentarios:</strong>\n', ''); // Restore original text
+                commentsDiv.replaceWith(originalComments);
+            }
+
+            const signatureDiv = document.getElementById('signature-print');
+            if (signatureDiv) {
+                const originalCanvas = document.createElement('canvas');
+                originalCanvas.id = 'signature-pad';
+                originalCanvas.width = 500;
+                originalCanvas.height = 150;
+                signatureDiv.replaceWith(originalCanvas);
+                // Re-initialize canvas context and event listeners
+                const newCanvas = document.getElementById('signature-pad');
+                const newCtx = newCanvas.getContext('2d');
+                resizeCanvas(); // Re-apply resizing
+                // Re-add event listeners for the new canvas
+                newCanvas.addEventListener('mousedown', e => {
+                    drawing = true;
+                    newCtx.beginPath();
+                    const rect = newCanvas.getBoundingClientRect();
+                    newCtx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+                });
+                newCanvas.addEventListener('mousemove', e => {
+                    if (drawing) {
+                        const rect = newCanvas.getBoundingClientRect();
+                        newCtx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+                        newCtx.stroke();
+                    }
+                });
+                newCanvas.addEventListener('mouseup', () => { drawing = false; });
+                newCanvas.addEventListener('mouseleave', () => { drawing = false; });
+                newCanvas.addEventListener('touchstart', e => {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    const rect = newCanvas.getBoundingClientRect();
+                    drawing = true;
+                    newCtx.beginPath();
+                    newCtx.moveTo(touch.clientX - rect.left, touch.clientY - rect.top);
+                });
+                newCanvas.addEventListener('touchmove', e => {
+                    e.preventDefault();
+                    if (drawing) {
+                        const touch = e.touches[0];
+                        const rect = newCanvas.getBoundingClientRect();
+                        newCtx.lineTo(touch.clientX - rect.left, touch.clientY - rect.top);
+                        newCtx.stroke();
+                    }
+                });
+                newCanvas.addEventListener('touchend', () => { drawing = false; });
+
+                // If you had a signature drawn before printing, you'd need to re-draw it here
+                // For simplicity, it's cleared when the canvas is re-initialized.
+            }
+        };
+    </script>
 </body>
 </html>
