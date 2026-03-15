@@ -2,348 +2,95 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Presupuesto – Tercera Bodega</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F5F4F0;--card:#fff;--ink:#1A1A1A;--ink2:#555550;--ink3:#9A9A94;
+  --accent:#1C2B4A;--highlight:#E8E5DC;--green:#2D6A4F;--green-bg:#EEF7F2;
+  --border:#E2E0D8;--radius:14px;
+  --font:'DM Sans',sans-serif;--mono:'DM Mono',monospace;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);padding-bottom:40px}
 
-  :root {
-    --bg: #F5F4F0;
-    --card: #FFFFFF;
-    --ink: #1A1A1A;
-    --ink2: #555550;
-    --ink3: #9A9A94;
-    --accent: #1C2B4A;
-    --accent2: #2E4270;
-    --highlight: #E8E5DC;
-    --green: #2D6A4F;
-    --green-bg: #EEF7F2;
-    --border: #E2E0D8;
-    --shadow: 0 2px 12px rgba(0,0,0,0.07);
-    --radius: 14px;
-    --font: 'DM Sans', sans-serif;
-    --mono: 'DM Mono', monospace;
-  }
+/* hero */
+.hero{background:var(--accent);color:#fff;padding:28px 20px 24px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.05)}
+.hero-badge{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:4px 12px;margin-bottom:12px;color:rgba(255,255,255,.9)}
+.hero h1{font-size:22px;font-weight:600;line-height:1.2;margin-bottom:4px}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.7);font-weight:300;margin-bottom:2px}
+.hero-loc{font-size:11px;color:rgba(255,255,255,.5);font-weight:300;line-height:1.4;margin-top:6px}
 
-  body {
-    font-family: var(--font);
-    background: var(--bg);
-    color: var(--ink);
-    min-height: 100vh;
-    padding-bottom: 40px;
-  }
+/* banner */
+.banner{margin:0 16px;transform:translateY(-20px);background:#fff;border-radius:var(--radius);box-shadow:0 4px 20px rgba(0,0,0,.1);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border:1px solid var(--border)}
+.banner .lbl{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3)}
+.banner .sub-lbl{font-size:10px;color:var(--ink3);margin-top:2px}
+.banner .amount{font-family:var(--mono);font-size:22px;font-weight:500;color:var(--accent);letter-spacing:-.02em}
 
-  /* ── Hero header ── */
-  .hero {
-    background: var(--accent);
-    color: white;
-    padding: 28px 20px 24px;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -40px; right: -40px;
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.05);
-  }
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -60px; left: -20px;
-    width: 220px; height: 220px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.04);
-  }
-  .hero-badge {
-    display: inline-block;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 20px;
-    padding: 4px 12px;
-    margin-bottom: 12px;
-    color: rgba(255,255,255,0.9);
-  }
-  .hero h1 {
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1.2;
-    margin-bottom: 4px;
-  }
-  .hero-sub {
-    font-size: 13px;
-    color: rgba(255,255,255,0.7);
-    font-weight: 300;
-    margin-bottom: 2px;
-  }
-  .hero-loc {
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    line-height: 1.4;
-    margin-top: 6px;
-  }
+/* search */
+.search-wrap{padding:0 16px 16px;margin-top:-4px}
+.search-wrap input{width:100%;background:#fff;border:1px solid var(--border);border-radius:10px;padding:11px 14px 11px 38px;font-family:var(--font);font-size:14px;color:var(--ink);outline:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239A9A94' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:12px center}
+.search-wrap input::placeholder{color:var(--ink3)}
 
-  /* ── Total banner ── */
-  .total-banner {
-    margin: 0 16px;
-    transform: translateY(-20px);
-    background: white;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    padding: 16px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid var(--border);
-  }
-  .total-banner .lbl {
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--ink3);
-  }
-  .total-banner .amount {
-    font-family: var(--mono);
-    font-size: 22px;
-    font-weight: 500;
-    color: var(--accent);
-    letter-spacing: -0.02em;
-  }
+/* accordion using details/summary — no JS needed */
+.sections{padding:0 16px;display:flex;flex-direction:column;gap:12px}
 
-  /* ── Search ── */
-  .search-wrap {
-    padding: 0 16px 16px;
-    margin-top: -4px;
-  }
-  .search-wrap input {
-    width: 100%;
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 11px 14px 11px 38px;
-    font-family: var(--font);
-    font-size: 14px;
-    color: var(--ink);
-    outline: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239A9A94' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: 12px center;
-  }
-  .search-wrap input::placeholder { color: var(--ink3); }
-  .search-wrap input:focus { border-color: var(--accent2); box-shadow: 0 0 0 3px rgba(46,66,112,0.1); }
+details{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
 
-  /* ── Section cards ── */
-  .sections { padding: 0 16px; display: flex; flex-direction: column; gap: 12px; }
+summary{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;cursor:pointer;background:var(--accent);gap:10px;list-style:none;-webkit-tap-highlight-color:transparent}
+summary::-webkit-details-marker{display:none}
 
-  .section-card {
-    background: var(--card);
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: box-shadow 0.2s;
-  }
+.s-left{display:flex;align-items:center;gap:10px;flex:1;min-width:0}
+.s-num{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:#fff;flex-shrink:0}
+.s-title{font-size:13px;font-weight:600;color:#fff;line-height:1.3}
+.s-badge{font-family:var(--mono);font-size:12px;font-weight:500;color:rgba(255,255,255,.9);background:rgba(255,255,255,.15);border-radius:6px;padding:4px 8px;white-space:nowrap;flex-shrink:0}
+.arrow{width:18px;height:18px;flex-shrink:0;transition:transform .25s;color:rgba(255,255,255,.7)}
+details[open] .arrow{transform:rotate(180deg)}
 
-  .section-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 14px 16px;
-    cursor: pointer;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    background: var(--accent);
-    gap: 10px;
-  }
-  .section-header:active { opacity: 0.85; }
+/* subcat */
+.subcat{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);padding:10px 16px 4px;background:var(--highlight);border-top:1px solid var(--border)}
 
-  .section-header-left { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
-  .section-num {
-    width: 28px; height: 28px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.15);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 600; color: white;
-    flex-shrink: 0;
-  }
-  .section-title {
-    font-size: 13px;
-    font-weight: 600;
-    color: white;
-    line-height: 1.3;
-  }
-  .section-total-badge {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.9);
-    background: rgba(255,255,255,0.15);
-    border-radius: 6px;
-    padding: 4px 8px;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-  .chevron {
-    width: 18px; height: 18px;
-    color: rgba(255,255,255,0.7);
-    flex-shrink: 0;
-    transition: transform 0.25s;
-  }
-  .section-card.open .chevron { transform: rotate(180deg); }
+/* item row */
+.item{display:grid;grid-template-columns:1fr auto;gap:8px;padding:10px 16px;border-top:1px solid var(--border);align-items:start}
+.item-num{font-family:var(--mono);font-size:10px;color:var(--ink3);margin-bottom:2px}
+.item-desc{font-size:12.5px;color:var(--ink);line-height:1.45}
+.item-meta{display:flex;gap:8px;margin-top:5px;flex-wrap:wrap}
+.pill{font-size:10.5px;color:var(--ink2);background:var(--highlight);border-radius:5px;padding:2px 7px;font-family:var(--mono)}
+.item-sub{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--ink);white-space:nowrap;text-align:right;padding-top:2px}
 
-  /* ── Section body ── */
-  .section-body { display: none; }
-  .section-card.open .section-body { display: block; }
+/* subtotal row */
+.strow{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:var(--green-bg);border-top:1px solid rgba(45,106,79,.15)}
+.strow .lbl{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.08em}
+.strow .val{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--green)}
 
-  /* ── Subcategory ── */
-  .subcat-label {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink3);
-    padding: 10px 16px 4px;
-    background: var(--highlight);
-    border-top: 1px solid var(--border);
-  }
+/* totals block */
+.totals{margin:16px 16px 0;border-radius:var(--radius);overflow:hidden;box-shadow:0 4px 20px rgba(28,43,74,.15)}
+.t-row{background:#fff;border:1px solid var(--border);border-bottom:none;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.t-row.iva{background:var(--highlight)}
+.t-row .t-lbl{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}
+.t-row.iva .t-lbl{color:var(--green)}
+.t-row .t-sub{font-size:11px;color:var(--ink3)}
+.t-row .t-val{font-family:var(--mono);font-size:17px;font-weight:500;color:var(--ink)}
+.t-row.iva .t-val{color:var(--green)}
+.t-grand{background:var(--accent);padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+.t-grand .t-lbl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:3px}
+.t-grand .t-sub{font-size:11px;color:rgba(255,255,255,.4)}
+.t-grand .t-val{font-family:var(--mono);font-size:24px;font-weight:500;color:#fff;letter-spacing:-.02em}
 
-  /* ── Item rows ── */
-  .item-row {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 8px;
-    padding: 10px 16px;
-    border-top: 1px solid var(--border);
-    align-items: start;
-    transition: background 0.15s;
-  }
-  .item-row:active { background: var(--highlight); }
-
-  .item-num {
-    font-family: var(--mono);
-    font-size: 10px;
-    color: var(--ink3);
-    margin-bottom: 2px;
-  }
-  .item-desc {
-    font-size: 12.5px;
-    color: var(--ink);
-    line-height: 1.45;
-  }
-  .item-meta {
-    display: flex;
-    gap: 8px;
-    margin-top: 5px;
-    flex-wrap: wrap;
-  }
-  .meta-pill {
-    font-size: 10.5px;
-    color: var(--ink2);
-    background: var(--highlight);
-    border-radius: 5px;
-    padding: 2px 7px;
-    font-family: var(--mono);
-  }
-  .item-subtotal {
-    font-family: var(--mono);
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--ink);
-    white-space: nowrap;
-    text-align: right;
-  }
-
-  /* ── Section subtotal row ── */
-  .subtotal-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 16px;
-    background: var(--green-bg);
-    border-top: 1px solid rgba(45,106,79,0.15);
-  }
-  .subtotal-row .lbl {
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--green);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .subtotal-row .val {
-    font-family: var(--mono);
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--green);
-  }
-
-  /* ── Grand total card ── */
-  .grand-total {
-    margin: 16px 16px 0;
-    background: var(--accent);
-    border-radius: var(--radius);
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(28,43,74,0.3);
-  }
-  .grand-total .lbl {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
-  }
-  .grand-total .val {
-    font-family: var(--mono);
-    font-size: 24px;
-    font-weight: 500;
-    color: white;
-    letter-spacing: -0.02em;
-  }
-
-  /* ── No results ── */
-  .no-results {
-    text-align: center;
-    padding: 40px 20px;
-    color: var(--ink3);
-    font-size: 14px;
-    display: none;
-  }
-
-  /* ── Animations ── */
-  .section-card { animation: fadeUp 0.3s ease both; }
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .section-card:nth-child(1)  { animation-delay: 0.02s; }
-  .section-card:nth-child(2)  { animation-delay: 0.05s; }
-  .section-card:nth-child(3)  { animation-delay: 0.08s; }
-  .section-card:nth-child(4)  { animation-delay: 0.11s; }
-  .section-card:nth-child(5)  { animation-delay: 0.14s; }
-  .section-card:nth-child(6)  { animation-delay: 0.17s; }
-  .section-card:nth-child(7)  { animation-delay: 0.20s; }
-  .section-card:nth-child(8)  { animation-delay: 0.23s; }
-  .section-card:nth-child(9)  { animation-delay: 0.26s; }
-  .section-card:nth-child(10) { animation-delay: 0.29s; }
-  .section-card:nth-child(11) { animation-delay: 0.32s; }
-
-  .highlight-match { background: #FFF3CD; border-radius: 3px; padding: 0 2px; }
+details{animation:fu .3s ease both}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+details:nth-child(1){animation-delay:.02s}details:nth-child(2){animation-delay:.05s}
+details:nth-child(3){animation-delay:.08s}details:nth-child(4){animation-delay:.11s}
+details:nth-child(5){animation-delay:.14s}details:nth-child(6){animation-delay:.17s}
+details:nth-child(7){animation-delay:.20s}details:nth-child(8){animation-delay:.23s}
+details:nth-child(9){animation-delay:.26s}details:nth-child(10){animation-delay:.29s}
+details:nth-child(11){animation-delay:.32s}
 </style>
 </head>
 <body>
 
-<!-- Hero -->
 <div class="hero">
   <div class="hero-badge">Presupuesto de Construcción</div>
   <h1>Tercera Bodega</h1>
@@ -351,293 +98,204 @@
   <div class="hero-loc">KM 29 Autopista a Comalapa · Olocuilta · La Paz</div>
 </div>
 
-<!-- Total banner -->
-<div class="total-banner">
+<div class="banner">
   <div>
     <div class="lbl">Total General</div>
-    <div style="font-size: 10px; color: var(--ink3); margin-top: 2px;">IVA 13% incluido</div>
+    <div class="sub-lbl">IVA 13% incluido</div>
   </div>
   <div class="amount">$725,814.39</div>
 </div>
 
-<!-- Search -->
 <div class="search-wrap">
-  <input type="text" id="searchInput" placeholder="Buscar partida o descripción…" oninput="filterSections()">
+  <input type="search" id="q" placeholder="Buscar partida o descripción…">
 </div>
 
-<!-- Sections -->
-<div class="sections" id="sections">
+<div class="sections" id="secs">
 
-  <!-- 1 -->
-  <div class="section-card" data-section="1">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">1</div>
-        <div class="section-title">Obras de Movilización</div>
-      </div>
-      <div class="section-total-badge">$6,350.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="item-row">
-        <div><div class="item-num">1.01</div><div class="item-desc">Movimiento de material y equipos, limpieza de área y despejar área para inicio de trabajo.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $1,500.00</span></div></div>
-        <div class="item-subtotal">$1,500.00</div>
-      </div>
-      <div class="item-row">
-        <div><div class="item-num">1.02</div><div class="item-desc">Operatividad, movilización de equipos, herramientas, señalización de obra y seguridad industrial.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $2,500.00</span></div></div>
-        <div class="item-subtotal">$2,500.00</div>
-      </div>
-      <div class="item-row">
-        <div><div class="item-num">1.03</div><div class="item-desc">Instalaciones provisionales de agua potable y servicios sanitarios.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $850.00</span></div></div>
-        <div class="item-subtotal">$850.00</div>
-      </div>
-      <div class="item-row">
-        <div><div class="item-num">1.04</div><div class="item-desc">Instalaciones provisionales de energía eléctrica.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $1,500.00</span></div></div>
-        <div class="item-subtotal">$1,500.00</div>
-      </div>
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$6,350.00</span></div>
-    </div>
-  </div>
+  <details open>
+    <summary>
+      <div class="s-left"><div class="s-num">1</div><div class="s-title">Obras de Movilización</div></div>
+      <div class="s-badge">$6,350.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="item"><div><div class="item-num">1.01</div><div class="item-desc">Movimiento de material y equipos, limpieza de área y despejar área para inicio de trabajo.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $1,500.00</span></div></div><div class="item-sub">$1,500.00</div></div>
+    <div class="item"><div><div class="item-num">1.02</div><div class="item-desc">Operatividad, movilización de equipos, herramientas, señalización de obra y seguridad industrial.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $2,500.00</span></div></div><div class="item-sub">$2,500.00</div></div>
+    <div class="item"><div><div class="item-num">1.03</div><div class="item-desc">Instalaciones provisionales de agua potable y servicios sanitarios.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $850.00</span></div></div><div class="item-sub">$850.00</div></div>
+    <div class="item"><div><div class="item-num">1.04</div><div class="item-desc">Instalaciones provisionales de energía eléctrica.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $1,500.00</span></div></div><div class="item-sub">$1,500.00</div></div>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$6,350.00</span></div>
+  </details>
 
-  <!-- 2 -->
-  <div class="section-card" data-section="2">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">2</div>
-        <div class="section-title">Obra Civil</div>
-      </div>
-      <div class="section-total-badge">$514,538.62</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="subcat-label">Obras Preliminares</div>
-      <div class="item-row"><div><div class="item-num">2.01</div><div class="item-desc">Trazo y nivelación.</div><div class="item-meta"><span class="meta-pill">m² · 2,800.00</span><span class="meta-pill">P.U. $1.50</span></div></div><div class="item-subtotal">$4,200.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.02</div><div class="item-desc">Excavación en material semi duro para fundaciones.</div><div class="item-meta"><span class="meta-pill">m³ · 144.38</span><span class="meta-pill">P.U. $7.50</span></div></div><div class="item-subtotal">$1,082.81</div></div>
-      <div class="item-row"><div><div class="item-num">2.03</div><div class="item-desc">Relleno compactado con suelo cemento 20:1.</div><div class="item-meta"><span class="meta-pill">m³ · 25.00</span><span class="meta-pill">P.U. $33.00</span></div></div><div class="item-subtotal">$825.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.04</div><div class="item-desc">Relleno compactado con material selecto.</div><div class="item-meta"><span class="meta-pill">m³ · 104.70</span><span class="meta-pill">P.U. $22.00</span></div></div><div class="item-subtotal">$2,303.40</div></div>
-      <div class="item-row"><div><div class="item-num">2.05</div><div class="item-desc">Desalojo de ripio y material inadecuado.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $3,500.00</span></div></div><div class="item-subtotal">$3,500.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Obras preliminares</span><span class="val">$11,911.21</span></div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">2</div><div class="s-title">Obra Civil</div></div>
+      <div class="s-badge">$514,538.62</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="subcat">Obras Preliminares</div>
+    <div class="item"><div><div class="item-num">2.01</div><div class="item-desc">Trazo y nivelación.</div><div class="item-meta"><span class="pill">m² · 2,800.00</span><span class="pill">P.U. $1.50</span></div></div><div class="item-sub">$4,200.00</div></div>
+    <div class="item"><div><div class="item-num">2.02</div><div class="item-desc">Excavación en material semi duro para fundaciones.</div><div class="item-meta"><span class="pill">m³ · 144.38</span><span class="pill">P.U. $7.50</span></div></div><div class="item-sub">$1,082.81</div></div>
+    <div class="item"><div><div class="item-num">2.03</div><div class="item-desc">Relleno compactado con suelo cemento 20:1.</div><div class="item-meta"><span class="pill">m³ · 25.00</span><span class="pill">P.U. $33.00</span></div></div><div class="item-sub">$825.00</div></div>
+    <div class="item"><div><div class="item-num">2.04</div><div class="item-desc">Relleno compactado con material selecto.</div><div class="item-meta"><span class="pill">m³ · 104.70</span><span class="pill">P.U. $22.00</span></div></div><div class="item-sub">$2,303.40</div></div>
+    <div class="item"><div><div class="item-num">2.05</div><div class="item-desc">Desalojo de ripio y material inadecuado.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $3,500.00</span></div></div><div class="item-sub">$3,500.00</div></div>
+    <div class="strow"><span class="lbl">Obras preliminares</span><span class="val">$11,911.21</span></div>
 
-      <div class="subcat-label">Concreto Armado</div>
-      <div class="item-row"><div><div class="item-num">2.06</div><div class="item-desc">Zapata tipo z-1 con refuerzo en ls de ho#<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1724572739262f7a">[email&#160;protected]</a> a.s. y refuerzo en lí de ho #<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7f4b3f4f514e4712">[email&#160;protected]</a> a.s. con concreto f'c=210kg/cm².</div><div class="item-meta"><span class="meta-pill">c/u · 32.00</span><span class="meta-pill">P.U. $136.43</span></div></div><div class="item-subtotal">$4,365.60</div></div>
-      <div class="item-row"><div><div class="item-num">2.07</div><div class="item-desc">Pedestal tipo p-1 de h=1.60m con refuerzo longitudinal, concreto f'c=230 kg/cm² (incluye encofrinado).</div><div class="item-meta"><span class="meta-pill">c/u · 32.00</span><span class="meta-pill">P.U. $262.50</span></div></div><div class="item-subtotal">$8,400.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.08</div><div class="item-desc">Solera de fundación de 0.40x0.25m con refuerzo longitudinal, concreto f'c=210kg/cm².</div><div class="item-meta"><span class="meta-pill">ml · 210.00</span><span class="meta-pill">P.U. $62.84</span></div></div><div class="item-subtotal">$13,195.35</div></div>
-      <div class="item-row"><div><div class="item-num">2.09</div><div class="item-desc">Tensor tipo t-1 de 0.30x0.30m con refuerzo longitudinal, concreto f'c=210kg/cm².</div><div class="item-meta"><span class="meta-pill">ml · 416.00</span><span class="meta-pill">P.U. $38.69</span></div></div><div class="item-subtotal">$16,092.96</div></div>
-      <div class="item-row"><div><div class="item-num">2.10</div><div class="item-desc">Pared de bloque de concreto 15x20x40cm con refuerzo vertical #<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="daee9aeaf4eeeab7">[email&#160;protected]</a> y horizontal #<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="221062120c16124f">[email&#160;protected]</a>.</div><div class="item-meta"><span class="meta-pill">m² · 217.50</span><span class="meta-pill">P.U. $25.00</span></div></div><div class="item-subtotal">$5,437.50</div></div>
-      <div class="item-row"><div><div class="item-num">2.11</div><div class="item-desc">Solera de coronamiento de pared a base de bloque solera 0.15x0.20x0.40m con refuerzo horizontal.</div><div class="item-meta"><span class="meta-pill">ml · 40.00</span><span class="meta-pill">P.U. $12.00</span></div></div><div class="item-subtotal">$480.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Concreto armado</span><span class="val">$47,971.41</span></div>
+    <div class="subcat">Concreto Armado</div>
+    <div class="item"><div><div class="item-num">2.06</div><div class="item-desc">Zapata tipo z-1 con refuerzo ho#3@0.18m a.s. y ho #4@0.18m a.s., concreto f'c=210kg/cm².</div><div class="item-meta"><span class="pill">c/u · 32.00</span><span class="pill">P.U. $136.43</span></div></div><div class="item-sub">$4,365.60</div></div>
+    <div class="item"><div><div class="item-num">2.07</div><div class="item-desc">Pedestal tipo p-1 h=1.60m con refuerzo longitudinal, concreto f'c=230 kg/cm² (incluye encofrinado).</div><div class="item-meta"><span class="pill">c/u · 32.00</span><span class="pill">P.U. $262.50</span></div></div><div class="item-sub">$8,400.00</div></div>
+    <div class="item"><div><div class="item-num">2.08</div><div class="item-desc">Solera de fundación 0.40x0.25m con refuerzo longitudinal, concreto f'c=210kg/cm².</div><div class="item-meta"><span class="pill">ml · 210.00</span><span class="pill">P.U. $62.84</span></div></div><div class="item-sub">$13,195.35</div></div>
+    <div class="item"><div><div class="item-num">2.09</div><div class="item-desc">Tensor tipo t-1 de 0.30x0.30m con refuerzo longitudinal, concreto f'c=210kg/cm².</div><div class="item-meta"><span class="pill">ml · 416.00</span><span class="pill">P.U. $38.69</span></div></div><div class="item-sub">$16,092.96</div></div>
+    <div class="item"><div><div class="item-num">2.10</div><div class="item-desc">Pared de bloque de concreto 15x20x40cm con refuerzo vertical #4@0.40m y horizontal #2@0.40m.</div><div class="item-meta"><span class="pill">m² · 217.50</span><span class="pill">P.U. $25.00</span></div></div><div class="item-sub">$5,437.50</div></div>
+    <div class="item"><div><div class="item-num">2.11</div><div class="item-desc">Solera de coronamiento 0.15x0.20x0.40m con refuerzo horizontal de ho 2#3+grapa #2@0.15m.</div><div class="item-meta"><span class="pill">ml · 40.00</span><span class="pill">P.U. $12.00</span></div></div><div class="item-sub">$480.00</div></div>
+    <div class="strow"><span class="lbl">Concreto armado</span><span class="val">$47,971.41</span></div>
 
-      <div class="subcat-label">Estructura Metálica</div>
-      <div class="item-row"><div><div class="item-num">2.12</div><div class="item-desc">Placa metálica de lámina ho 0.40x0.50m e=3/4" con 6 pernos de ho #6 con tuerca y arandela.</div><div class="item-meta"><span class="meta-pill">c/u · 32.00</span><span class="meta-pill">P.U. $262.50</span></div></div><div class="item-subtotal">$8,400.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.13</div><div class="item-desc">Columna metálica a base de perfil w 14x61.</div><div class="item-meta"><span class="meta-pill">ml · 289.00</span><span class="meta-pill">P.U. $217.50</span></div></div><div class="item-subtotal">$62,857.50</div></div>
-      <div class="item-row"><div><div class="item-num">2.13.1</div><div class="item-desc">Columna metálica a base de perfil w 12x40.</div><div class="item-meta"><span class="meta-pill">ml · 22.50</span><span class="meta-pill">P.U. $165.00</span></div></div><div class="item-subtotal">$3,712.50</div></div>
-      <div class="subtotal-row"><span class="lbl">Estructura metálica</span><span class="val">$74,970.00</span></div>
+    <div class="subcat">Estructura Metálica</div>
+    <div class="item"><div><div class="item-num">2.12</div><div class="item-desc">Placa metálica de lámina ho 0.40x0.50m e=3/4" con 6 pernos ho #6 con tuerca y arandela.</div><div class="item-meta"><span class="pill">c/u · 32.00</span><span class="pill">P.U. $262.50</span></div></div><div class="item-sub">$8,400.00</div></div>
+    <div class="item"><div><div class="item-num">2.13</div><div class="item-desc">Columna metálica a base de perfil w 14x61.</div><div class="item-meta"><span class="pill">ml · 289.00</span><span class="pill">P.U. $217.50</span></div></div><div class="item-sub">$62,857.50</div></div>
+    <div class="item"><div><div class="item-num">2.13.1</div><div class="item-desc">Columna metálica a base de perfil w 12x40.</div><div class="item-meta"><span class="pill">ml · 22.50</span><span class="pill">P.U. $165.00</span></div></div><div class="item-sub">$3,712.50</div></div>
+    <div class="strow"><span class="lbl">Estructura metálica</span><span class="val">$74,970.00</span></div>
 
-      <div class="subcat-label">Estructura Metálica de Techo</div>
-      <div class="item-row"><div><div class="item-num">2.14</div><div class="item-desc">Viga perimetral a base.</div><div class="item-meta"><span class="meta-pill">ml · 210.00</span><span class="meta-pill">P.U. $165.00</span></div></div><div class="item-subtotal">$34,650.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.15</div><div class="item-desc">Viga transversal inclinada.</div><div class="item-meta"><span class="meta-pill">ml · 416.00</span><span class="meta-pill">P.U. $202.50</span></div></div><div class="item-subtotal">$84,240.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.16</div><div class="item-desc">Viga metálica en cumbrera a base de perfil w12x16.</div><div class="item-meta"><span class="meta-pill">ml · 150.00</span><span class="meta-pill">P.U. $187.50</span></div></div><div class="item-subtotal">$28,125.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.17</div><div class="item-desc">Polin encajuelado de 6"x2" chapa 16.</div><div class="item-meta"><span class="meta-pill">ml · 2,400.00</span><span class="meta-pill">P.U. $9.38</span></div></div><div class="item-subtotal">$22,500.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.18</div><div class="item-desc">Tensor a base de barra de ho ø5/8" con rosca, tuerca y arandela. Incluye placa de sujeción de ángulo 3"x3"x1/4".</div><div class="item-meta"><span class="meta-pill">ml · 780.00</span><span class="meta-pill">P.U. $15.00</span></div></div><div class="item-subtotal">$11,700.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.21</div><div class="item-desc">Canal de lámina lisa galvanizada cal. 24 con estructura metálica de tubo 1"x1" y ganchos de varilla ø1/2"@0.50m.</div><div class="item-meta"><span class="meta-pill">ml · 152.00</span><span class="meta-pill">P.U. $18.75</span></div></div><div class="item-subtotal">$2,850.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.22</div><div class="item-desc">Lámina de acero y aluminio con recubrimiento de zinc, calibre 26, pre pintada color blanco (incluye fijación).</div><div class="item-meta"><span class="meta-pill">m² · 2,464.00</span><span class="meta-pill">P.U. $18.00</span></div></div><div class="item-subtotal">$44,352.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.23</div><div class="item-desc">Capote de lámina galvanizada calibre 24 pre pintada color blanco.</div><div class="item-meta"><span class="meta-pill">ml · 77.00</span><span class="meta-pill">P.U. $18.00</span></div></div><div class="item-subtotal">$1,386.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Estructura metálica de techo</span><span class="val">$229,803.00</span></div>
+    <div class="subcat">Estructura Metálica de Techo</div>
+    <div class="item"><div><div class="item-num">2.14</div><div class="item-desc">Viga perimetral a base.</div><div class="item-meta"><span class="pill">ml · 210.00</span><span class="pill">P.U. $165.00</span></div></div><div class="item-sub">$34,650.00</div></div>
+    <div class="item"><div><div class="item-num">2.15</div><div class="item-desc">Viga transversal inclinada.</div><div class="item-meta"><span class="pill">ml · 416.00</span><span class="pill">P.U. $202.50</span></div></div><div class="item-sub">$84,240.00</div></div>
+    <div class="item"><div><div class="item-num">2.16</div><div class="item-desc">Viga metálica en cumbrera a base de perfil w12x16.</div><div class="item-meta"><span class="pill">ml · 150.00</span><span class="pill">P.U. $187.50</span></div></div><div class="item-sub">$28,125.00</div></div>
+    <div class="item"><div><div class="item-num">2.17</div><div class="item-desc">Polin encajuelado de 6"x2" chapa 16.</div><div class="item-meta"><span class="pill">ml · 2,400.00</span><span class="pill">P.U. $9.38</span></div></div><div class="item-sub">$22,500.00</div></div>
+    <div class="item"><div><div class="item-num">2.18</div><div class="item-desc">Tensor barra ho ø5/8" con rosca, tuerca y arandela. Placa de sujeción ángulo 3"x3"x1/4".</div><div class="item-meta"><span class="pill">ml · 780.00</span><span class="pill">P.U. $15.00</span></div></div><div class="item-sub">$11,700.00</div></div>
+    <div class="item"><div><div class="item-num">2.21</div><div class="item-desc">Canal lámina lisa galvanizada cal.24 con estructura de tubo 1"x1" y ganchos varilla ø1/2"@0.50m.</div><div class="item-meta"><span class="pill">ml · 152.00</span><span class="pill">P.U. $18.75</span></div></div><div class="item-sub">$2,850.00</div></div>
+    <div class="item"><div><div class="item-num">2.22</div><div class="item-desc">Lámina de acero y aluminio, zinc, calibre 26, pre pintada color blanco (incluye fijación).</div><div class="item-meta"><span class="pill">m² · 2,464.00</span><span class="pill">P.U. $18.00</span></div></div><div class="item-sub">$44,352.00</div></div>
+    <div class="item"><div><div class="item-num">2.23</div><div class="item-desc">Capote de lámina galvanizada calibre 24 pre pintada color blanco.</div><div class="item-meta"><span class="pill">ml · 77.00</span><span class="pill">P.U. $18.00</span></div></div><div class="item-sub">$1,386.00</div></div>
+    <div class="strow"><span class="lbl">Estr. metálica de techo</span><span class="val">$229,803.00</span></div>
 
-      <div class="subcat-label">Piso</div>
-      <div class="item-row"><div><div class="item-num">2.24</div><div class="item-desc">Relleno compactado con material selecto.</div><div class="item-meta"><span class="meta-pill">m³ · 1,728.00</span><span class="meta-pill">P.U. $25.00</span></div></div><div class="item-subtotal">$43,200.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.25</div><div class="item-desc">Suministro e instalación de piso de concreto e:12cm armado con electromalla 10/10.</div><div class="item-meta"><span class="meta-pill">m² · 2,250.00</span><span class="meta-pill">P.U. $39.27</span></div></div><div class="item-subtotal">$88,357.50</div></div>
-      <div class="item-row"><div><div class="item-num">2.26</div><div class="item-desc">Piso de concreto tipo acero e=7cm con electromalla 6x6 10/10.</div><div class="item-meta"><span class="meta-pill">m² · 436.00</span><span class="meta-pill">P.U. $18.00</span></div></div><div class="item-subtotal">$7,848.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Piso</span><span class="val">$139,405.50</span></div>
+    <div class="subcat">Piso</div>
+    <div class="item"><div><div class="item-num">2.24</div><div class="item-desc">Relleno compactado con material selecto.</div><div class="item-meta"><span class="pill">m³ · 1,728.00</span><span class="pill">P.U. $25.00</span></div></div><div class="item-sub">$43,200.00</div></div>
+    <div class="item"><div><div class="item-num">2.25</div><div class="item-desc">Piso de concreto e:12cm armado con electromalla 10/10.</div><div class="item-meta"><span class="pill">m² · 2,250.00</span><span class="pill">P.U. $39.27</span></div></div><div class="item-sub">$88,357.50</div></div>
+    <div class="item"><div><div class="item-num">2.26</div><div class="item-desc">Piso de concreto tipo acero e=7cm con electromalla 6x6 10/10.</div><div class="item-meta"><span class="pill">m² · 436.00</span><span class="pill">P.U. $18.00</span></div></div><div class="item-sub">$7,848.00</div></div>
+    <div class="strow"><span class="lbl">Piso</span><span class="val">$139,405.50</span></div>
 
-      <div class="subcat-label">Puertas</div>
-      <div class="item-row"><div><div class="item-num">2.27</div><div class="item-desc">Suministro e instalación de portón principal.</div><div class="item-meta"><span class="meta-pill">c/u · 3.00</span><span class="meta-pill">P.U. $1,300.00</span></div></div><div class="item-subtotal">$3,900.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.28</div><div class="item-desc">Puerta principal tipo P-1 de 1.00x2.20m, lámina 3/16", tubo 1", con dos manos anticorrosivo.</div><div class="item-meta"><span class="meta-pill">c/u · 5.00</span><span class="meta-pill">P.U. $405.00</span></div></div><div class="item-subtotal">$2,025.00</div></div>
-      <div class="item-row"><div><div class="item-num">2.29</div><div class="item-desc">Puerta principal tipo P-2 de 1.00x2.20m, lámina 3/16", tubo 3/4", con dos manos anticorrosivo.</div><div class="item-meta"><span class="meta-pill">c/u · 9.00</span><span class="meta-pill">P.U. $307.50</span></div></div><div class="item-subtotal">$2,767.50</div></div>
-      <div class="item-row"><div><div class="item-num">2.30</div><div class="item-desc">Puerta de 0.8x2.1m estructura riostras cedro, forro plywood, pintura aceite, chapa y bisagra.</div><div class="item-meta"><span class="meta-pill">c/u · 7.00</span><span class="meta-pill">P.U. $255.00</span></div></div><div class="item-subtotal">$1,785.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Puertas</span><span class="val">$10,477.50</span></div>
-    </div>
-  </div>
+    <div class="subcat">Puertas</div>
+    <div class="item"><div><div class="item-num">2.27</div><div class="item-desc">Suministro e instalación de portón principal.</div><div class="item-meta"><span class="pill">c/u · 3.00</span><span class="pill">P.U. $1,300.00</span></div></div><div class="item-sub">$3,900.00</div></div>
+    <div class="item"><div><div class="item-num">2.28</div><div class="item-desc">Puerta tipo P-1 de 1.00x2.20m, lámina 3/16", tubo 1", dos manos anticorrosivo.</div><div class="item-meta"><span class="pill">c/u · 5.00</span><span class="pill">P.U. $405.00</span></div></div><div class="item-sub">$2,025.00</div></div>
+    <div class="item"><div><div class="item-num">2.29</div><div class="item-desc">Puerta tipo P-2 de 1.00x2.20m, lámina 3/16", tubo 3/4", dos manos anticorrosivo.</div><div class="item-meta"><span class="pill">c/u · 9.00</span><span class="pill">P.U. $307.50</span></div></div><div class="item-sub">$2,767.50</div></div>
+    <div class="item"><div><div class="item-num">2.30</div><div class="item-desc">Puerta 0.8x2.1m estructura cedro, forro plywood, pintura aceite, chapa y bisagra.</div><div class="item-meta"><span class="pill">c/u · 7.00</span><span class="pill">P.U. $255.00</span></div></div><div class="item-sub">$1,785.00</div></div>
+    <div class="strow"><span class="lbl">Puertas</span><span class="val">$10,477.50</span></div>
+  </details>
 
-  <!-- 3 -->
-  <div class="section-card" data-section="3">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">3</div>
-        <div class="section-title">Instalaciones Hidrosanitarias</div>
-      </div>
-      <div class="section-total-badge">$16,700.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="subcat-label">Agua Potable</div>
-      <div class="item-row"><div><div class="item-num">3.01</div><div class="item-desc">Instalaciones de agua potable.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $1,750.00</span></div></div><div class="item-subtotal">$1,750.00</div></div>
-      <div class="item-row"><div><div class="item-num">3.02</div><div class="item-desc">Tanque de polietileno de alta densidad de 2500 litros (incluye accesorios).</div><div class="item-meta"><span class="meta-pill">c/u · 2.00</span><span class="meta-pill">P.U. $850.00</span></div></div><div class="item-subtotal">$1,700.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Agua potable</span><span class="val">$3,450.00</span></div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">3</div><div class="s-title">Instalaciones Hidrosanitarias</div></div>
+      <div class="s-badge">$16,700.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="subcat">Agua Potable</div>
+    <div class="item"><div><div class="item-num">3.01</div><div class="item-desc">Instalaciones de agua potable.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $1,750.00</span></div></div><div class="item-sub">$1,750.00</div></div>
+    <div class="item"><div><div class="item-num">3.02</div><div class="item-desc">Tanque de polietileno de alta densidad de 2500 litros (incluye accesorios).</div><div class="item-meta"><span class="pill">c/u · 2.00</span><span class="pill">P.U. $850.00</span></div></div><div class="item-sub">$1,700.00</div></div>
+    <div class="strow"><span class="lbl">Agua potable</span><span class="val">$3,450.00</span></div>
+    <div class="subcat">Aguas Negras y Grises</div>
+    <div class="item"><div><div class="item-num">3.05</div><div class="item-desc">Instalaciones de aguas negras y grises.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $3,750.00</span></div></div><div class="item-sub">$3,750.00</div></div>
+    <div class="item"><div><div class="item-num">3.06</div><div class="item-desc">Fosa séptica individual.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $2,500.00</span></div></div><div class="item-sub">$2,500.00</div></div>
+    <div class="strow"><span class="lbl">Aguas negras y grises</span><span class="val">$6,250.00</span></div>
+    <div class="subcat">Aguas Lluvias</div>
+    <div class="item"><div><div class="item-num">3.09</div><div class="item-desc">Tubería PVC de ø4" 160 PSI (incluye accesorios).</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $4,500.00</span></div></div><div class="item-sub">$4,500.00</div></div>
+    <div class="item"><div><div class="item-num">3.10</div><div class="item-desc">Construcción de cajas de conexión de aguas lluvias.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $2,500.00</span></div></div><div class="item-sub">$2,500.00</div></div>
+    <div class="strow"><span class="lbl">Aguas lluvias</span><span class="val">$7,000.00</span></div>
+  </details>
 
-      <div class="subcat-label">Aguas Negras y Grises</div>
-      <div class="item-row"><div><div class="item-num">3.05</div><div class="item-desc">Instalaciones de aguas negras y grises.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $3,750.00</span></div></div><div class="item-subtotal">$3,750.00</div></div>
-      <div class="item-row"><div><div class="item-num">3.06</div><div class="item-desc">Fosa séptica individual.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $2,500.00</span></div></div><div class="item-subtotal">$2,500.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Aguas negras y grises</span><span class="val">$6,250.00</span></div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">4</div><div class="s-title">Sistema de Protección contra Incendio</div></div>
+      <div class="s-badge">$2,250.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="item"><div><div class="item-num">4.01</div><div class="item-desc">Extintor portátil tipo k 9 lbs (2.5 gal).</div><div class="item-meta"><span class="pill">c/u · 3.00</span><span class="pill">P.U. $750.00</span></div></div><div class="item-sub">$2,250.00</div></div>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$2,250.00</span></div>
+  </details>
 
-      <div class="subcat-label">Aguas Lluvias</div>
-      <div class="item-row"><div><div class="item-num">3.09</div><div class="item-desc">Suministro e instalación de tubería PVC de ø4" 160 PSI (incluye accesorios).</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $4,500.00</span></div></div><div class="item-subtotal">$4,500.00</div></div>
-      <div class="item-row"><div><div class="item-num">3.10</div><div class="item-desc">Construcción de cajas de conexión de aguas lluvias.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $2,500.00</span></div></div><div class="item-subtotal">$2,500.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Aguas lluvias</span><span class="val">$7,000.00</span></div>
-    </div>
-  </div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">5</div><div class="s-title">Ventilación y Extracción Mecánica</div></div>
+      <div class="s-badge">$9,100.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="item"><div><div class="item-num">5.01</div><div class="item-desc">Extractor tipo axial, 3597 cfm (con protección de motor, aspa).</div><div class="item-meta"><span class="pill">u · 4.00</span><span class="pill">P.U. $1,650.00</span></div></div><div class="item-sub">$6,600.00</div></div>
+    <div class="item"><div><div class="item-num">5.02</div><div class="item-desc">Botonera, arrancador, protector de voltaje.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $2,500.00</span></div></div><div class="item-sub">$2,500.00</div></div>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$9,100.00</span></div>
+  </details>
 
-  <!-- 4 -->
-  <div class="section-card" data-section="4">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">4</div>
-        <div class="section-title">Sistema de Protección contra Incendio</div>
-      </div>
-      <div class="section-total-badge">$2,250.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="item-row"><div><div class="item-num">4.01</div><div class="item-desc">Suministro e instalación de extintor portátil tipo k 9 lbs (2.5 gal).</div><div class="item-meta"><span class="meta-pill">c/u · 3.00</span><span class="meta-pill">P.U. $750.00</span></div></div><div class="item-subtotal">$2,250.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$2,250.00</span></div>
-    </div>
-  </div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">7</div><div class="s-title">Instalaciones Eléctricas</div></div>
+      <div class="s-badge">$18,500.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="item"><div><div class="item-num">7.01</div><div class="item-desc">Instalaciones eléctricas.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $18,500.00</span></div></div><div class="item-sub">$18,500.00</div></div>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$18,500.00</span></div>
+  </details>
 
-  <!-- 5 -->
-  <div class="section-card" data-section="5">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">5</div>
-        <div class="section-title">Ventilación y Extracción Mecánica</div>
-      </div>
-      <div class="section-total-badge">$9,100.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="item-row"><div><div class="item-num">5.01</div><div class="item-desc">Suministro e instalación de extractor tipo axial, 3597 cfm (con protección de motor, aspa).</div><div class="item-meta"><span class="meta-pill">u · 4.00</span><span class="meta-pill">P.U. $1,650.00</span></div></div><div class="item-subtotal">$6,600.00</div></div>
-      <div class="item-row"><div><div class="item-num">5.02</div><div class="item-desc">Suministro e instalación de botonera, arrancador, protector de voltaje.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $2,500.00</span></div></div><div class="item-subtotal">$2,500.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$9,100.00</span></div>
-    </div>
-  </div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">8</div><div class="s-title">Paredes de Lámina</div></div>
+      <div class="s-badge">$47,925.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="item"><div><div class="item-num">8.01</div><div class="item-desc">Lámina de acero y aluminio, zinc, calibre 26, pre pintada color blanco (incluye fijación).</div><div class="item-meta"><span class="pill">m² · 1,597.50</span><span class="pill">P.U. $30.00</span></div></div><div class="item-sub">$47,925.00</div></div>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$47,925.00</span></div>
+  </details>
 
-  <!-- 7 -->
-  <div class="section-card" data-section="7">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">7</div>
-        <div class="section-title">Instalaciones Eléctricas</div>
-      </div>
-      <div class="section-total-badge">$18,500.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="item-row"><div><div class="item-num">7.01</div><div class="item-desc">Instalaciones eléctricas.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $18,500.00</span></div></div><div class="item-subtotal">$18,500.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$18,500.00</span></div>
-    </div>
-  </div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">9</div><div class="s-title">Medidas Ambientales</div></div>
+      <div class="s-badge">$1,500.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="item"><div><div class="item-num">9.01</div><div class="item-desc">Medidas ambientales.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $1,500.00</span></div></div><div class="item-sub">$1,500.00</div></div>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$1,500.00</span></div>
+  </details>
 
-  <!-- 8 -->
-  <div class="section-card" data-section="8">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">8</div>
-        <div class="section-title">Paredes de Lámina</div>
-      </div>
-      <div class="section-total-badge">$47,925.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="item-row"><div><div class="item-num">8.01</div><div class="item-desc">Lámina de acero y aluminio con recubrimiento de zinc, calibre 26, pre pintada color blanco (incluye todos sus elementos de fijación).</div><div class="item-meta"><span class="meta-pill">m² · 1,597.50</span><span class="meta-pill">P.U. $30.00</span></div></div><div class="item-subtotal">$47,925.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$47,925.00</span></div>
-    </div>
-  </div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">10</div><div class="s-title">Señalización de Seguridad</div></div>
+      <div class="s-badge">$2,500.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="item"><div><div class="item-num">10.01</div><div class="item-desc">Señalización de seguridad.</div><div class="item-meta"><span class="pill">sg · 1.00</span><span class="pill">P.U. $2,500.00</span></div></div><div class="item-sub">$2,500.00</div></div>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$2,500.00</span></div>
+  </details>
 
-  <!-- 9 -->
-  <div class="section-card" data-section="9">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">9</div>
-        <div class="section-title">Medidas Ambientales</div>
-      </div>
-      <div class="section-total-badge">$1,500.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="item-row"><div><div class="item-num">9.01</div><div class="item-desc">Medidas ambientales.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $1,500.00</span></div></div><div class="item-subtotal">$1,500.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$1,500.00</span></div>
-    </div>
-  </div>
+  <details>
+    <summary>
+      <div class="s-left"><div class="s-num">11</div><div class="s-title">Messaline</div></div>
+      <div class="s-badge">$22,950.00</div>
+      <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="strow"><span class="lbl">Subtotal</span><span class="val">$22,950.00</span></div>
+  </details>
 
-  <!-- 10 -->
-  <div class="section-card" data-section="10">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">10</div>
-        <div class="section-title">Señalización de Seguridad</div>
-      </div>
-      <div class="section-total-badge">$2,500.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="item-row"><div><div class="item-num">9.01</div><div class="item-desc">Señalización de seguridad.</div><div class="item-meta"><span class="meta-pill">sg · 1.00</span><span class="meta-pill">P.U. $2,500.00</span></div></div><div class="item-subtotal">$2,500.00</div></div>
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$2,500.00</span></div>
-    </div>
-  </div>
-
-  <!-- 11 -->
-  <div class="section-card" data-section="11">
-    <div class="section-header" onclick="toggle(this)">
-      <div class="section-header-left">
-        <div class="section-num">11</div>
-        <div class="section-title">Messaline</div>
-      </div>
-      <div class="section-total-badge">$22,950.00</div>
-      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
-    </div>
-    <div class="section-body">
-      <div class="subtotal-row"><span class="lbl">Subtotal</span><span class="val">$22,950.00</span></div>
-    </div>
-  </div>
-
-  <div class="no-results" id="noResults">No se encontraron resultados.</div>
 </div>
 
-<!-- IVA + Grand total -->
-<div style="margin: 16px 16px 0; display: flex; flex-direction: column; gap: 0; border-radius: var(--radius); overflow: hidden; box-shadow: 0 4px 20px rgba(28,43,74,0.15);">
-  <div style="background: var(--card); border: 1px solid var(--border); border-bottom: none; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;">
-    <div>
-      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2px;">Subtotal</div>
-      <div style="font-size: 12px; color: var(--ink2);">Sin impuestos</div>
-    </div>
-    <div style="font-family: var(--mono); font-size: 17px; font-weight: 500; color: var(--ink);">$642,313.62</div>
+<!-- Totals -->
+<div class="totals">
+  <div class="t-row">
+    <div><div class="t-lbl">Subtotal</div><div class="t-sub">Sin impuestos</div></div>
+    <div class="t-val">$642,313.62</div>
   </div>
-  <div style="background: var(--highlight); border: 1px solid var(--border); border-bottom: none; padding: 14px 20px; display: flex; justify-content: space-between; align-items: center;">
-    <div>
-      <div style="font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--green); margin-bottom: 2px;">IVA 13%</div>
-      <div style="font-size: 12px; color: var(--ink2);">Impuesto El Salvador</div>
-    </div>
-    <div style="font-family: var(--mono); font-size: 17px; font-weight: 500; color: var(--green);">$83,500.77</div>
+  <div class="t-row iva">
+    <div><div class="t-lbl">IVA 13%</div><div class="t-sub">Impuesto El Salvador</div></div>
+    <div class="t-val">$83,500.77</div>
   </div>
-  <div class="grand-total" style="margin: 0; border-radius: 0 0 var(--radius) var(--radius);">
-    <div>
-      <div class="lbl">Total General</div>
-      <div style="font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px;">IVA incluido</div>
-    </div>
-    <div class="val">$725,814.39</div>
+  <div class="t-grand">
+    <div><div class="t-lbl">Total General</div><div class="t-sub">IVA incluido</div></div>
+    <div class="t-val">$725,814.39</div>
   </div>
 </div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  function toggle(header) {
-    const card = header.closest('.section-card');
-    card.classList.toggle('open');
-  }
-
-  function filterSections() {
-    const q = document.getElementById('searchInput').value.toLowerCase().trim();
-    const cards = document.querySelectorAll('.section-card');
-    let anyVisible = false;
-
-    cards.forEach(card => {
-      if (!q) {
- 
+<script>
+document.getElementById('q').addEventListener('input', function(){
+  var v = this.value.toLowerCase();
+  document.querySelectorAll('#secs details').forEach(function(d){
+    var match = d.textContent.toLowerCase().includes(v);
+    d.style.display = match ? '' : 'none';
+    if(match && v) d.open = true;
+  });
+});
+</script>
+</body>
+</html>
